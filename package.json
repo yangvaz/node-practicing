@@ -4,13 +4,18 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/index.js" ,
+    "dev": "nodemon src/index.js",
     "postinstall": "ls"
   },
   "dependencies": {
     "express": "^4.21.2"
   },
   "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "eslint": "^9.17.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "globals": "^15.14.0",
     "nodemon": "^3.1.9"
   }
 }

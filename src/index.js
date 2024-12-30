@@ -4,7 +4,7 @@ const app = express();
 
 // Criando rota GET
 app.get('/', (request, response) => {
-  response.send('Testing');
+  response.send("testing")
 });
 
 // Criando servidor e definindo porta
