@@ -1,11 +1,12 @@
 const express = require('express');
 
+const routes = require('./routes');
+
 const app = express();
 
-// Criando rota GET
-app.get('/', (request, response) => {
-  response.send("testing")
-});
+app.use(routes);
+
+
 
 // Criando servidor e definindo porta
 app.listen(3000, () => console.log('Server started at http://localhost:3000 '));
