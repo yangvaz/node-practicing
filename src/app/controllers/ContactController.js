@@ -29,8 +29,19 @@ class ContactController {
     // Editar um registro
   }
 
-  delete() {
+  async delete(request, response) {
     // Deletar um registro
+    const { id } = request.params;
+
+    const contact = await ContactsRepository.findById(id);
+
+    if (!contact) {
+      return response.status(404).json({ error: 'User not found' });
+    }
+
+    await ContactsRepository.delete(id);
+    // 204: Valid request but No Content
+    response.sendStatus(204);
   }
 }
 

@@ -4,8 +4,8 @@ const routes = require('./routes');
 
 const app = express();
 
-app.use(routes);
 
+app.use(routes);
 
 
 // Criando servidor e definindo porta
