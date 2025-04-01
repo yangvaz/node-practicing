@@ -55,7 +55,6 @@ class ContactsRepository {
     return deleteOp;
   }
 
-
 }
 
 module.exports = new ContactsRepository();
