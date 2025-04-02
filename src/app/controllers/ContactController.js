@@ -48,7 +48,10 @@ class ContactController {
     const { id } = request.params;
     const { name, email, phone, category_id } = request.body;
 
+    console.log('email:', email);
+
     const contactExists = await ContactsRepository.findById(id);
+
     if(!contactExists) {
       return response.status(404).json({ error: 'User not found.' })
     }
@@ -62,8 +65,16 @@ class ContactController {
       return response.status(400).json({ error: 'Email already in use.'});
     }
 
+    // undefined == null is TRUE
+    const emailUpdated = email !== undefined ? email : contactExists.email;
+    const phoneUpdated = phone !== undefined ? phone : contactExists.phone;
+    const categoryUpdated = category_id !== undefined ? category_id : contactExists.category_id;
+
     const contact = await ContactsRepository.update(id, {
-      name, email, phone, category_id
+      name,
+      email: emailUpdated,
+      phone: phoneUpdated,
+      category_id: categoryUpdated
     })
 
     response.json(contact);

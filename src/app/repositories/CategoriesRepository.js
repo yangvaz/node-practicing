@@ -11,6 +11,18 @@ class CategoriesRepository {
     return rows;
   }
 
+  async findById(id) {
+    const [row] = await db.query(`
+      SELECT categories.*, contacts.name AS contact_name
+      FROM categories
+      LEFT JOIN contacts ON contacts.category_id = categories.id
+      WHERE categories.id = $1
+      `, [id]);
+    return row;
+    // Ao inserir ID não existente no banco (diferente de inserir ID de categoria por exemplo),
+    // o programa para e não consegue avançar
+  }
+
   async create({ name }) {
     const [row] = await db.query(`
       INSERT INTO categories(name)
